@@ -1,6 +1,5 @@
 const pool = require('../models/db');
 
-
 exports.criarUsuario = async(req, res) => {
  const {nome, idade} = req.body;
 
@@ -11,7 +10,7 @@ exports.criarUsuario = async(req, res) => {
          timestamp: new Date().toISOString()
      });
  
-     console.log("dados recebidos", result.rows[0]);
+     console.log("dados enviados para o banco de dados", result.rows[0]);
  
      } catch (error) {
          console.error("Erro ao processar a requisição:", error);
@@ -21,14 +20,23 @@ exports.criarUsuario = async(req, res) => {
 };
 
 
-exports.listarUsuarios = (req, res) => {
-      req.body = {
-        message: "Listar usuarios",
-        timestamp: new Date().toDateString()
-    }
+exports.listarUsuarios = async(req, res) => {
 
-    res.json(req.body);
-    console.log(req.body)
+    try{
+        const result = await pool.query('SELECT * FROM usuarios');
+
+        res.json({
+            message: "Listar usuarios",
+            timestamp: new Date().toDateString(),
+            data: result.rows
+        });
+
+        console.log("usuarios listados:", result.rows);
+
+    }catch(error){
+        console.error("Erro ao listar usuarios:", error);
+        res.status(500).json({error: "erro interno do servidor"});
+    }
+      
    };
    
-

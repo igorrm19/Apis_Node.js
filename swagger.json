@@ -1,0 +1,78 @@
+{
+  "swagger": "9.6.7",
+  "openapi": "3.1.0",
+  "info": {
+    "title": "API do sistema principal",
+    "description": "Esta é a documentação da API do sistema principal.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Lista todos os usuários",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "description": "Número da página para paginação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Nome do usuário"
+                },
+                "idade": {
+                  "type": "integer",
+                  "description": "Idade do usuário"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuários listados com sucesso"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      },
+      "post": {
+        "summary": "Cria um novo usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string",
+                    "description": "Nome do usuário"
+                  },
+                  "idade": {
+                    "type": "integer",
+                    "description": "Idade do usuário"
+                  }
+                },
+                "required": ["nome", "idade"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Usuário criado com sucesso"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    }
+  }
+}
