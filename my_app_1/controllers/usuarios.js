@@ -2,7 +2,10 @@ const pool = require('../models/db');
 
 exports.criarUsuario = async(req, res) => {
  const {nome, idade} = req.body;
-
+    if (!nome || !idade) {
+        return res.status(400).json({ error: "Nome e idade são obrigatórios" });
+    }
+    
  try{
         const result = await pool.query('INSERT INTO usuarios (nome, idade) VALUES ($1, $2) RETURNING *', [nome, idade]);
         res.json({
