@@ -1,0 +1,14 @@
+{
+  "name": "apis_node",
+  "version": "1.0.0",
+  "description": "api_evolution",
+  "main": "jest.config.js",
+  "scripts": {
+    "test": "jest --passWithNoTests"
+  },
+  "author": "igorrm22",
+  "license": "ISC",
+  "devDependencies": {
+    "supertest": "^7.1.3"
+  }
+}
