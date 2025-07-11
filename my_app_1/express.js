@@ -15,3 +15,5 @@ ap.use('/', rataDeUsuarios);
 ap.listen(porta, () => {
     console.log("Localhost: ", porta);
 });
+
+module.exports = ap;
