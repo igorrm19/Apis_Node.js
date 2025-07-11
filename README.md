@@ -11,7 +11,11 @@ A primeira versão da api, ela apenas recebe uma idade e um nome e faz o uso dos
 para manipular, funcionalidades:
 
   -> Uso dos metodos http com Node e express, post, get, get/:id, put e delete
+  
   -> Conexão com o banco de dados PostgresSQL
+  
   -> Modularização da API rest separando em divisões, arquitetura mvc sem view
+  
   -> Documentação ultilizando swagger
+  
   -> Testes unitarios com jest
